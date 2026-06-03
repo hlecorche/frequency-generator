@@ -45,6 +45,9 @@ class FrequencyGeneratorTest extends TestCase
         $this->assertSame($value, $generateDateTimeImmutableProperty->getValue($generator));
     }
 
+    /**
+     * @return array<array{bool}>
+     */
     public function getTestGenerateDateTimeImmutableProvider(): array
     {
         return [
@@ -67,6 +70,8 @@ class FrequencyGeneratorTest extends TestCase
     }
 
     /**
+     * @param string[] $times
+     *
      * @dataProvider getTestNextInEveryDayProvider
      */
     public function testNextInEveryDay(string $now, array $times, string $expected): void
@@ -88,6 +93,9 @@ class FrequencyGeneratorTest extends TestCase
         $this->checkResultDate($expected, \DateTimeImmutable::class, $result);
     }
 
+    /**
+     * @return array<array{string, string[], string}>
+     */
     public function getTestNextInEveryDayProvider(): array
     {
         return [
@@ -122,6 +130,9 @@ class FrequencyGeneratorTest extends TestCase
     }
 
     /**
+     * @param array<int|string> $days
+     * @param string[]          $times
+     *
      * @dataProvider getTestNextInEveryWeekProvider
      */
     public function testNextInEveryWeek(string $now, array $days, array $times, string $expected): void
@@ -143,6 +154,9 @@ class FrequencyGeneratorTest extends TestCase
         $this->checkResultDate($expected, \DateTimeImmutable::class, $result);
     }
 
+    /**
+     * @return array<array{string, array<int|string>, string[], string}>
+     */
     public function getTestNextInEveryWeekProvider(): array
     {
         return [
@@ -178,7 +192,7 @@ class FrequencyGeneratorTest extends TestCase
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage('Bad day fake');
 
-        $generator->nextInEveryWeek(['fake'], []); // @phpstan-ignore-line
+        $generator->nextInEveryWeek(['fake'], []);
     }
 
     public function testNextInEveryWeekWithBadTime(): void
@@ -205,6 +219,9 @@ class FrequencyGeneratorTest extends TestCase
     }
 
     /**
+     * @param array<int|string> $days
+     * @param string[]          $times
+     *
      * @dataProvider getTestNextInEveryMonthProvider
      */
     public function testNextInEveryMonth(string $now, array $days, array $times, string $expected): void
@@ -226,6 +243,9 @@ class FrequencyGeneratorTest extends TestCase
         $this->checkResultDate($expected, \DateTimeImmutable::class, $result);
     }
 
+    /**
+     * @return array<array{string, array<int|string>, string[], string}>
+     */
     public function getTestNextInEveryMonthProvider(): array
     {
         return [
@@ -266,7 +286,7 @@ class FrequencyGeneratorTest extends TestCase
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage('Bad day fake');
 
-        $generator->nextInEveryMonth(['fake'], []); // @phpstan-ignore-line
+        $generator->nextInEveryMonth(['fake'], []);
     }
 
     public function testNextInEveryMonthWithBadTime(): void
@@ -293,6 +313,10 @@ class FrequencyGeneratorTest extends TestCase
     }
 
     /**
+     * @param array<int|string> $monthOffsets
+     * @param array<int|string> $daysInMonth
+     * @param string[]          $times
+     *
      * @dataProvider getTestNextInEveryQuartProvider
      */
     public function testNextInEveryQuart(string $now, array $monthOffsets, array $daysInMonth, array $times, string $expected): void
@@ -314,6 +338,9 @@ class FrequencyGeneratorTest extends TestCase
         $this->checkResultDate($expected, \DateTimeImmutable::class, $result);
     }
 
+    /**
+     * @return array<array{string, array<int|string>, array<int|string>, string[], string}>
+     */
     public function getTestNextInEveryQuartProvider(): array
     {
         return [
@@ -357,7 +384,7 @@ class FrequencyGeneratorTest extends TestCase
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage('Bad month offset fake');
 
-        $generator->nextInEveryQuart(['fake'], []); // @phpstan-ignore-line
+        $generator->nextInEveryQuart(['fake'], []);
     }
 
     public function testNextInEveryQuartWithBadDay(): void
@@ -377,7 +404,7 @@ class FrequencyGeneratorTest extends TestCase
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage('Bad day fake');
 
-        $generator->nextInEveryQuart([], ['fake']); // @phpstan-ignore-line
+        $generator->nextInEveryQuart([], ['fake']);
     }
 
     public function testNextInEveryQuartBadTime(): void
@@ -404,6 +431,10 @@ class FrequencyGeneratorTest extends TestCase
     }
 
     /**
+     * @param array<int|string> $monthOffsets
+     * @param array<int|string> $daysInMonth
+     * @param string[]          $times
+     *
      * @dataProvider getTestNextInEveryHalfYearProvider
      */
     public function testNextInEveryHalfYear(string $now, array $monthOffsets, array $daysInMonth, array $times, string $expected): void
@@ -425,6 +456,9 @@ class FrequencyGeneratorTest extends TestCase
         $this->checkResultDate($expected, \DateTimeImmutable::class, $result);
     }
 
+    /**
+     * @return array<array{string, array<int|string>, array<int|string>, string[], string}>
+     */
     public function getTestNextInEveryHalfYearProvider(): array
     {
         return [
@@ -468,7 +502,7 @@ class FrequencyGeneratorTest extends TestCase
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage('Bad month offset fake');
 
-        $generator->nextInEveryHalfYear(['fake'], []); // @phpstan-ignore-line
+        $generator->nextInEveryHalfYear(['fake'], []);
     }
 
     public function testNextInEveryHalfYearWithBadDay(): void
@@ -488,7 +522,7 @@ class FrequencyGeneratorTest extends TestCase
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage('Bad day fake');
 
-        $generator->nextInEveryHalfYear([], ['fake']); // @phpstan-ignore-line
+        $generator->nextInEveryHalfYear([], ['fake']);
     }
 
     public function testNextInEveryMonthHalfYearBadTime(): void
@@ -515,6 +549,10 @@ class FrequencyGeneratorTest extends TestCase
     }
 
     /**
+     * @param array<int|string> $monthOffsets
+     * @param array<int|string> $daysInMonth
+     * @param string[]          $times
+     *
      * @dataProvider getTestNextInEveryYearProvider
      */
     public function testNextInEveryYear(string $now, array $monthOffsets, array $daysInMonth, array $times, string $expected): void
@@ -536,6 +574,9 @@ class FrequencyGeneratorTest extends TestCase
         $this->checkResultDate($expected, \DateTimeImmutable::class, $result);
     }
 
+    /**
+     * @return array<array{string, array<int|string>, array<int|string>, string[], string}>
+     */
     public function getTestNextInEveryYearProvider(): array
     {
         return [
@@ -579,7 +620,7 @@ class FrequencyGeneratorTest extends TestCase
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage('Bad month offset fake');
 
-        $generator->nextInEveryYear(['fake'], []); // @phpstan-ignore-line
+        $generator->nextInEveryYear(['fake'], []);
     }
 
     public function testNextInEveryearWithBadDay(): void
@@ -599,7 +640,7 @@ class FrequencyGeneratorTest extends TestCase
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage('Bad day fake');
 
-        $generator->nextInEveryYear([], ['fake']); // @phpstan-ignore-line
+        $generator->nextInEveryYear([], ['fake']);
     }
 
     public function testNextInEveryYearBadTime(): void
@@ -613,6 +654,8 @@ class FrequencyGeneratorTest extends TestCase
     }
 
     /**
+     * @param string[] $frequencies
+     *
      * @dataProvider getTestGetNextFrequencyProvider
      */
     public function testGetNextFrequency(array $frequencies, string $expected): void
@@ -628,6 +671,9 @@ class FrequencyGeneratorTest extends TestCase
         $this->checkResultDate($expected, \DateTime::class, $result);
     }
 
+    /**
+     * @return array<array{string[], string}>
+     */
     public function getTestGetNextFrequencyProvider(): array
     {
         return [
@@ -647,6 +693,14 @@ class FrequencyGeneratorTest extends TestCase
         $this->assertEquals(new $expectedClass($expectedDate), $result);
     }
 
+    /**
+     * @template T of \DateTimeInterface
+     *
+     * @param string[]        $dates
+     * @param class-string<T> $class
+     *
+     * @return T[]
+     */
     protected function createDates(array $dates, string $class): array
     {
         $dateObjects = [];

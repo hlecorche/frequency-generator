@@ -53,7 +53,7 @@ class FrequencyGenerator
     /**
      * Return the next date for "every week" frequency.
      *
-     * @param int[]                $days  Array of days in week (integers). (1=Monday => 7=Sunday). Default: Only "1" (monday)
+     * @param array<int|string>    $days  Array of days in week (integers). (1=Monday => 7=Sunday). Default: Only "1" (monday)
      * @param \DateTimeInterface[] $times Array of DateTimeInterface objects. Default: Only "00:00:00"
      *
      * @throws \Exception
@@ -95,7 +95,7 @@ class FrequencyGenerator
     /**
      * Return the next date for "every month" frequency.
      *
-     * @param int[]                $days  Array of days in month (integers). (1=>31). Default: Only "1" (1st)
+     * @param array<int|string>    $days  Array of days in month (integers). (1=>31). Default: Only "1" (1st)
      * @param \DateTimeInterface[] $times Array of DateTimeInterface objects. Default: Only "00:00:00"
      *
      * @throws \Exception
@@ -123,8 +123,8 @@ class FrequencyGenerator
     /**
      * Return the next date for "every quart" frequency.
      *
-     * @param int[]                $monthOffsets Array of month offsets in quart (integers). (1 = January, April, July, October. 2 = February, May, August, November. 3 = March, June, September, December). Default: Only "1" (January, April, July, October)
-     * @param int[]                $daysInMonth  Array of days in month (integers). (1=>31). Default: Only "1" (1st)
+     * @param array<int|string>    $monthOffsets Array of month offsets in quart (integers). (1 = January, April, July, October. 2 = February, May, August, November. 3 = March, June, September, December). Default: Only "1" (January, April, July, October)
+     * @param array<int|string>    $daysInMonth  Array of days in month (integers). (1=>31). Default: Only "1" (1st)
      * @param \DateTimeInterface[] $times        Array of DateTimeInterface objects. Default: Only "00:00:00"
      */
     public function nextInEveryQuart(array $monthOffsets = [1], array $daysInMonth = [1], array $times = []): \DateTimeInterface
@@ -149,8 +149,8 @@ class FrequencyGenerator
     /**
      * Return the next date for "every half year" frequency.
      *
-     * @param int[]                $monthOffsets Array of month offsets in half year (integers). (1 = January, July. 2 = February, August. 3 = March, September. 4 = April, October. 5 = May , November. 6 = June, December). Default: Only "1" (January, July)
-     * @param int[]                $daysInMonth  Array of days in month (integers). (1=>31). Default: Only "1" (1st)
+     * @param array<int|string>    $monthOffsets Array of month offsets in half year (integers). (1 = January, July. 2 = February, August. 3 = March, September. 4 = April, October. 5 = May , November. 6 = June, December). Default: Only "1" (January, July)
+     * @param array<int|string>    $daysInMonth  Array of days in month (integers). (1=>31). Default: Only "1" (1st)
      * @param \DateTimeInterface[] $times        Array of DateTimeInterface objects. Default: Only "00:00:00"
      */
     public function nextInEveryHalfYear(array $monthOffsets = [1], array $daysInMonth = [1], array $times = []): \DateTimeInterface
@@ -178,8 +178,8 @@ class FrequencyGenerator
     /**
      * Return the next date for "every year" frequency.
      *
-     * @param int[]                $monthOffsets Array of month offsets in year (integers). (1 = January => 12 => December). Default: Only "1" (January)
-     * @param int[]                $daysInMonth  Array of days in month (integers). (1=>31). Default: Only "1" (1st)
+     * @param array<int|string>    $monthOffsets Array of month offsets in year (integers). (1 = January => 12 => December). Default: Only "1" (January)
+     * @param array<int|string>    $daysInMonth  Array of days in month (integers). (1=>31). Default: Only "1" (1st)
      * @param \DateTimeInterface[] $times        Array of DateTimeInterface objects. Default: Only "00:00:00"
      */
     public function nextInEveryYear(array $monthOffsets = [1], array $daysInMonth = [1], array $times = []): \DateTimeInterface
@@ -201,7 +201,7 @@ class FrequencyGenerator
     }
 
     /**
-     * @param int[] $ints
+     * @param array<int|string> $ints
      *
      * @return int[]
      */
@@ -323,8 +323,8 @@ class FrequencyGenerator
     }
 
     /**
-     * @param int[]                  $monthOffsets
-     * @param int[]                  $daysInMonth
+     * @param array<int|string>      $monthOffsets
+     * @param array<int|string>      $daysInMonth
      * @param \DateTimeInterface[]   $times
      * @param array<int, array<int>> $monthsByOffset
      */
